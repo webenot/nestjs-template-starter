@@ -1,0 +1,63 @@
+on:
+  pull_request:
+    branches:
+      - staging
+    types: [closed]
+  push:
+    branches:
+      - staging
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+      - name: installation
+        run: npm ci
+      - name: lint
+        run: npm run lint
+      - name: test
+        run: npm run test
+      - name: audit (only failing for >= HIGH severity, or exit code 8+)
+        run: /bin/bash -c 'npm audit --omit=dev --audit-level=high; [[ $? -ge 8 ]] && exit $? || exit 0'
+
+  deploy:
+    if: github.event.pull_request.merged == true
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4 # checkout repo
+      - uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: ${{ secrets.GKE_SA_KEY }} #
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+
+
+        # Configure credentials for docker
+      - run: gcloud auth configure-docker
+
+        # Build the Docker image
+      - run: docker build -t ${{ secrets.GKE_CLUSTER_IMAGE_UAT }} .
+
+        # Push the Docker image to Google Container Registry
+      - run: docker push ${{ secrets.GKE_CLUSTER_IMAGE_UAT }}
+
+      - run: gcloud container clusters get-credentials ${{ secrets.GKE_CLUSTER_NAME_UAT }} --zone ${{ secrets.GKE_ZONE }} --project ${{ secrets.PROJECT_ID }}
+
+      # Install helm
+      - uses: azure/setup-helm@v1
+        id: install
+
+      # Deploy latest version
+      - run: kubectl rollout restart deployment/api -n uat

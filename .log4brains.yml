@@ -1,0 +1,5 @@
+project:
+  name: Nestjs boilerplate
+  tz: Europe/Kiev
+  adrFolder: ./docs/adr
+  packages: []

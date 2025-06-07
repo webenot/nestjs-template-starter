@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": ["build"],
+  "include": [
+    "test/**/*",
+    "src/**/*.spec.ts"
+  ],
+  "compilerOptions": {
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "sourceMap": true,
+    "noEmit": false,
+    "incremental": true,
+    "tsBuildInfoFile": "./build/tsbuildinfo.json",
+    "outDir": "build",
+    "rootDir": "./",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+  }
+}

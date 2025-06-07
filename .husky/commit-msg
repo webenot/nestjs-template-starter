@@ -1,0 +1,12 @@
+#!/bin/bash
+
+COMMIT_MSG_FILE=$1
+hint=$(cat "$COMMIT_MSG_FILE")
+echo $hint
+if [[ $hint =~ ^([A-Z]{1,5}\-[0-9]{1,5})::(.)+ ]]
+then
+  echo ""
+else
+  echo "Wrong commit message format"
+  exit 1
+fi
