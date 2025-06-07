@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import type { Job } from 'bull';
 
-import { LoggerService } from '../../../logger/logger.service';
+import { LoggerService } from '~/logger/logger.service';
 
 @Injectable()
 export class CronManagerService {

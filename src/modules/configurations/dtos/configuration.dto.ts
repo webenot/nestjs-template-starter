@@ -1,6 +1,7 @@
 import { IsBooleanString, IsEnum, IsNotEmpty, IsNumberString, IsOptional, IsString } from 'class-validator';
 
-import { LogLevelEnum } from '../../../logger/enums';
+import { LogLevelEnum } from '~/logger/enums';
+
 import { EMPTY_STRING } from '../../utils/constants';
 import { PlatformsEnum } from '../../utils/enums';
 

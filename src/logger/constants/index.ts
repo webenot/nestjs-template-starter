@@ -1,4 +1,4 @@
-import type { PlatformsEnum } from '../../modules/utils/enums';
+import type { PlatformsEnum } from '~/modules/utils/enums';
 import { LogLevelEnum } from '../enums';
 
 export const MESSAGE_KEY = 'message';

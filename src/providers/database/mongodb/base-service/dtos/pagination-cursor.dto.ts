@@ -1,6 +1,6 @@
 import { plainToInstance } from 'class-transformer';
 
-import { objectFromBase64, objectToBase64 } from '../../../../../modules/utils/buffer';
+import { objectFromBase64, objectToBase64 } from '~/modules/utils/buffer';
 
 export class PaginationCursorDto<M = undefined> {
   type: 'string' | 'number' | 'object';

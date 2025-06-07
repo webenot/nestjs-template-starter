@@ -1,6 +1,7 @@
 import type { Document } from 'mongoose';
 
-import { getValueByKey } from '../../../../../modules/utils/object';
+import { getValueByKey } from '~/modules/utils/object';
+
 import { PaginationCursorDto } from '../dtos';
 import type { IPagination } from '../types';
 
@@ -25,7 +26,7 @@ export function buildPaginatedResponseUtil<T extends Document, M>(
       cursor: lastElement
         ? PaginationCursorDto.toBase64(
             getValueByKey<string | number | Date>(lastElement, sortKey),
-            lastElement?._id.toString(),
+            lastElement?._id?.toString(),
             cursorMeta
           )
         : undefined,

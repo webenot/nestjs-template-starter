@@ -1,9 +1,10 @@
 import { Process, Processor } from '@nestjs/bull';
 import type { Job } from 'bull';
 
-import { BullBaseConsumerService } from '../../providers/bull/bull-base-consumer.service';
-import { QueueProcessesEnum } from '../../providers/bull/enums/queue-processes.enum';
-import { QueueProcessorsEnum } from '../../providers/bull/enums/queue-processors.enum';
+import { BullBaseConsumerService } from '~/providers/bull/bull-base-consumer.service';
+import { QueueProcessesEnum } from '~/providers/bull/enums/queue-processes.enum';
+import { QueueProcessorsEnum } from '~/providers/bull/enums/queue-processors.enum';
+
 import { CronManagerService } from '../managers/cron-manager/cron-manager.service';
 
 @Processor(QueueProcessorsEnum.TEST)

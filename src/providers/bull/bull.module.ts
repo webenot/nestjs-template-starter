@@ -1,7 +1,8 @@
 import { BullModule as Bull } from '@nestjs/bull';
 import { Module } from '@nestjs/common';
 
-import { ConfigurationService } from '../../modules/configurations/configuration.service';
+import { ConfigurationService } from '~/modules/configurations/configuration.service';
+
 import { BullBaseConsumerService } from './bull-base-consumer.service';
 import { QueueProcessorsEnum } from './enums/queue-processors.enum';
 

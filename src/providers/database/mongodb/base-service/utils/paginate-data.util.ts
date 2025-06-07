@@ -1,6 +1,7 @@
 import type { Document, Query } from 'mongoose';
 
-import { PAGINATION_DEFAULT_LIMIT } from '../../../../../modules/utils/constants';
+import { PAGINATION_DEFAULT_LIMIT } from '~/modules/utils/constants';
+
 import { PaginationCursorDto } from '../dtos';
 import { SortOrderEnum } from '../enums';
 import type { IPagination, IPaginationOptions } from '../types';
@@ -35,7 +36,7 @@ export async function paginateDataUtil<TEntity, M>(
   }
 
   const items = await request.exec();
-  const totalItems = await cloneQuery.count();
+  const totalItems = await cloneQuery.countDocuments();
 
   return buildPaginatedResponseUtil(items, totalItems, sortKey, limit, cursorMeta);
 }

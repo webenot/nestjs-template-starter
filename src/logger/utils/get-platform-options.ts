@@ -1,6 +1,7 @@
 import type { LoggerOptions } from 'pino';
 
-import { PlatformsEnum } from '../../modules/utils/enums';
+import { PlatformsEnum } from '~/modules/utils/enums';
+
 import { awsLoggerOptions } from '../config/aws/aws-logger-options';
 import { gcpLoggerOptions } from '../config/gcp/gcp-logger-options';
 import { localLoggerOptions } from '../config/local/local-logger-options';

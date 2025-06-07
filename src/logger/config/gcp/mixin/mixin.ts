@@ -1,4 +1,5 @@
-import { getAsyncLocalStorageContext } from '../../../../shared/local-storage';
+import { getAsyncLocalStorageContext } from '~/shared/local-storage';
+
 import type { IMixin } from '../../../types';
 
 export const gcpMixin: IMixin = (): Record<string, unknown> => {
