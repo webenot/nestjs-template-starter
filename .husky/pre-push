@@ -1,4 +1,4 @@
 #!/bin/bash
 
 npm run build
-npm audit --only=prod --audit-level=high; [[ $? -ge 8 ]] && exit $? || exit 0
+npm audit --omit=dev --audit-level=high; [[ $? -ge 8 ]] && exit $? || exit 0
