@@ -27,7 +27,7 @@ jobs:
       - name: test
         run: npm run test
       - name: audit (only failing for >= HIGH severity, or exit code 8+)
-        run: /bin/bash -c 'npm audit --only=prod --audit-level=high; [[ $? -ge 8 ]] && exit $? || exit 0'
+        run: /bin/bash -c 'npm audit --omit=dev --audit-level=high; [[ $? -ge 8 ]] && exit $? || exit 0'
 
   deploy:
     if: github.event.pull_request.merged == true
