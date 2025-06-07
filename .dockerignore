@@ -1,0 +1,13 @@
+Dockerfile
+Dockerfile.dev
+.dockerignore
+docker-compose.yaml
+node_modules
+npm-debug.log
+README.md
+.next
+docs
+.log4brains.yml
+.git
+.github
+.gitlab-ci.yml

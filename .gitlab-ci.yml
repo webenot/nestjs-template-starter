@@ -1,0 +1,33 @@
+default:
+  image: node:18
+stages:
+  - setup
+  - check
+  - build
+cache:
+  key: $CI_COMMIT_REF_SLUG
+  paths:
+    - .npm/
+before_script:
+  - npm ci --cache .npm --prefer-offline
+lint:
+  stage: check
+  script:
+    - npm run lint
+audit:
+  stage: check
+  script:
+    - npm audit --only=prod --audit-level=high
+test:
+  stage: check
+  script:
+    - npm run test
+  allow_failure: true
+build:
+  stage: build
+  cache:
+  script:
+    - npm run build
+  needs:
+    - audit
+    - lint

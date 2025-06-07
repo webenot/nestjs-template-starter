@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "test/**/*",
+    "src/**/*.spec.ts",
+    "build",
+    "src/providers/database/mongodb/**/*"
+  ],
+  "compilerOptions": {
+    "sourceMap": true,
+    "noEmit": false,
+    "incremental": true,
+    "tsBuildInfoFile": "./build/tsbuildinfo.json",
+    "outDir": "build",
+    "rootDir": "./",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
+  }
+}

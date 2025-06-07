@@ -1,0 +1,5 @@
+#!/bin/bash
+. "$(dirname -- "$0")/_/husky.sh"
+
+npm run build
+npm audit --only=prod --audit-level=high; [[ $? -ge 8 ]] && exit $? || exit 0

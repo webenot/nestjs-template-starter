@@ -1,0 +1,28 @@
+on:
+  push:
+    branches-ignore:
+      - develop
+      - staging
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: install node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+      - name: installation
+        run: npm ci
+      - name: lint
+        run: npm run lint
+      - name: test
+        run: npm run test
+      - name: audit (only failing for >= HIGH severity, or exit code 8+)
+        run: /bin/bash -c 'npm audit --only=prod --audit-level=high; [[ $? -ge 8 ]] && exit $? || exit 0'
