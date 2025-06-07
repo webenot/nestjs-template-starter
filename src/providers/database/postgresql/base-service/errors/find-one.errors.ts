@@ -1,8 +1,8 @@
 import { type FindOptionsWhere, ObjectLiteral } from 'typeorm';
 
 import { TQueryFailedError } from '~/modules/utils/types';
-import { BaseError } from '~/shared/errors/base-error';
 import type { FindOptions } from '~/providers/database/postgresql/base-service/types';
+import { BaseError } from '~/shared/errors/base-error';
 
 export abstract class FindOneError<Entity extends ObjectLiteral> extends BaseError {
   constructor(
