@@ -23,7 +23,7 @@ services:
       - redis
       - postgres
   redis:
-    image : redis:6
+    image : redis:8
     container_name: boilerplate-redis
     command:
       - "redis-server"
@@ -36,7 +36,7 @@ services:
       - ${REDIS_PORT}:6379
   postgres:
     container_name: boilerplate-postgres
-    image: postgres:13
+    image: postgres:18
     networks:
       - app-network
     environment:
@@ -50,7 +50,7 @@ services:
       - pgdata:/var/lib/postgresql/data
   mongodb:
     container_name: boilerplate-mongodb
-    image: mongo:6
+    image: mongo:8.3.1
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root_password
@@ -65,7 +65,7 @@ services:
       - app-network
   rabbitmq:
     container_name: boilerplate-rabbitmq
-    image: rabbitmq:3.9-management
+    image: rabbitmq:4.3-management
     command: rabbitmq-server
     ports:
       - "5672:5672"

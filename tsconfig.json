@@ -1,13 +1,19 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "incremental": true,
+    "types": ["node", "jest"],
+    "sourceMap": true,
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "skipDefaultLibCheck": true,
     "allowJs": false,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
-    "baseUrl": ".",
-    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
-    "exactOptionalPropertyTypes": false,
-    "experimentalDecorators": true,
+    "exactOptionalPropertyTypes": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["ES2022"],
     "module": "commonjs",
@@ -20,21 +26,20 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "paths": {
-      "~/*": ["./src/*"]
-    },
     "skipLibCheck": true,
     "strict": true,
     "strictPropertyInitialization": false,
     "resolveJsonModule": true,
     "target": "es2022",
-    "sourceMap": true,
+    "paths": {
+      "~/*": ["./src/*"]
+    },
     "inlineSources": true,
     // Set `sourceRoot` to "/" to strip the build path prefix
     // from generated source code references.
     // This improves issue grouping in Sentry.
-    "sourceRoot": "/",
-    "types": ["node", "jest"]
+    "baseUrl": ".",
+    "rootDir": "."
   },
   "include": [
     "**/*/.eslintrc.js",
