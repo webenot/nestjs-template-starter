@@ -1,4 +1,4 @@
-FROM node:18.12.1-alpine as base
+FROM node:24-alpine as base
 
 RUN apk add --update --no-cache make
 
@@ -16,7 +16,7 @@ ENV SERVICE_PORT=8080
 
 EXPOSE ${SERVICE_PORT}
 
-FROM node:18.12.1-alpine as production
+FROM node:24-alpine as production
 WORKDIR /opt/app/
 
 RUN addgroup -g 1001 -S nodejs \
