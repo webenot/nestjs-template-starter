@@ -45,7 +45,7 @@ describe(RedisService.name, () => {
       const result = await redisService.get(key);
 
       expect(redisClient.get).toHaveBeenCalledTimes(1);
-      expect(redisClient.get).toBeCalledWith(key);
+      expect(redisClient.get).toHaveBeenCalledWith(key);
       expect(result).toBe(returnedValue);
     });
 
@@ -56,7 +56,7 @@ describe(RedisService.name, () => {
       const result = await redisService.get(key);
 
       expect(redisClient.get).toHaveBeenCalledTimes(1);
-      expect(redisClient.get).toBeCalledWith(key);
+      expect(redisClient.get).toHaveBeenCalledWith(key);
       expect(result).toBeNull();
     });
   });
@@ -70,7 +70,7 @@ describe(RedisService.name, () => {
       const result = await redisService.set(key, value);
 
       expect(redisClient.set).toHaveBeenCalledTimes(1);
-      expect(redisClient.set).toBeCalledWith(key, value);
+      expect(redisClient.set).toHaveBeenCalledWith(key, value);
       expect(result).toBe(OK);
     });
 
@@ -79,7 +79,7 @@ describe(RedisService.name, () => {
       const result = await redisService.set(key, value, ttl);
 
       expect(redisClient.set).toHaveBeenCalledTimes(1);
-      expect(redisClient.set).toBeCalledWith(key, value, 'EX', ttl);
+      expect(redisClient.set).toHaveBeenCalledWith(key, value, 'EX', ttl);
       expect(result).toBe(OK);
     });
   });
@@ -92,7 +92,7 @@ describe(RedisService.name, () => {
       const result = await redisService.delete(key);
 
       expect(redisClient.del).toHaveBeenCalledTimes(1);
-      expect(redisClient.del).toBeCalledWith(key);
+      expect(redisClient.del).toHaveBeenCalledWith(key);
       expect(result).toBe(numberOfDeleteKeys);
     });
 
@@ -103,7 +103,7 @@ describe(RedisService.name, () => {
       const result = await redisService.delete(key);
 
       expect(redisClient.del).toHaveBeenCalledTimes(1);
-      expect(redisClient.del).toBeCalledWith(key);
+      expect(redisClient.del).toHaveBeenCalledWith(key);
       expect(result).toBe(numberOfDeleteKeys);
     });
   });
@@ -116,7 +116,7 @@ describe(RedisService.name, () => {
       const result = await redisService.keys('*');
 
       expect(redisClient.keys).toHaveBeenCalledTimes(1);
-      expect(redisClient.keys).toBeCalledWith(searchPattern);
+      expect(redisClient.keys).toHaveBeenCalledWith(searchPattern);
       expect(result).toEqual(expect.arrayContaining([key]));
       expect(result).not.toEqual(expect.arrayContaining([searchPattern]));
     });
@@ -128,7 +128,7 @@ describe(RedisService.name, () => {
       const result = await redisService.exists(key);
 
       expect(redisClient.exists).toHaveBeenCalledTimes(1);
-      expect(redisClient.exists).toBeCalledWith(key);
+      expect(redisClient.exists).toHaveBeenCalledWith(key);
       expect(result).toBeTruthy();
     });
 
@@ -137,7 +137,7 @@ describe(RedisService.name, () => {
       const result = await redisService.exists(key);
 
       expect(redisClient.exists).toHaveBeenCalledTimes(1);
-      expect(redisClient.exists).toBeCalledWith(key);
+      expect(redisClient.exists).toHaveBeenCalledWith(key);
       expect(result).toBeFalsy();
     });
   });
@@ -148,7 +148,7 @@ describe(RedisService.name, () => {
       const result = await redisService.setAdd(key, value);
 
       expect(redisClient.sadd).toHaveBeenCalledTimes(1);
-      expect(redisClient.sadd).toBeCalledWith(key, value);
+      expect(redisClient.sadd).toHaveBeenCalledWith(key, value);
       expect(result).toBe(1);
     });
   });
@@ -159,7 +159,7 @@ describe(RedisService.name, () => {
       const result = await redisService.setRemove(key, value);
 
       expect(redisClient.srem).toHaveBeenCalledTimes(1);
-      expect(redisClient.srem).toBeCalledWith(key, value);
+      expect(redisClient.srem).toHaveBeenCalledWith(key, value);
       expect(result).toBe(1);
     });
   });
@@ -170,7 +170,7 @@ describe(RedisService.name, () => {
       const result = await redisService.setMembers(key);
 
       expect(redisClient.smembers).toHaveBeenCalledTimes(1);
-      expect(redisClient.smembers).toBeCalledWith(key);
+      expect(redisClient.smembers).toHaveBeenCalledWith(key);
       expect(result).toEqual(expect.arrayContaining([value]));
     });
   });
@@ -181,7 +181,7 @@ describe(RedisService.name, () => {
       const result = await redisService.incrby(key, 5);
 
       expect(redisClient.incrby).toHaveBeenCalledTimes(1);
-      expect(redisClient.incrby).toBeCalledWith(key, 5);
+      expect(redisClient.incrby).toHaveBeenCalledWith(key, 5);
       expect(result).toEqual(mathOperationResult);
     });
   });
@@ -192,7 +192,7 @@ describe(RedisService.name, () => {
       const result = await redisService.decrby(key, 5);
 
       expect(redisClient.decrby).toHaveBeenCalledTimes(1);
-      expect(redisClient.decrby).toBeCalledWith(key, 5);
+      expect(redisClient.decrby).toHaveBeenCalledWith(key, 5);
       expect(result).toEqual(mathOperationResult);
     });
   });
