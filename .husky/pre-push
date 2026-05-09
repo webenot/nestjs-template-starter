@@ -2,3 +2,4 @@
 
 npm run build
 npm audit --omit=dev --audit-level=high; [[ $? -ge 8 ]] && exit $? || exit 0
+npm run test
